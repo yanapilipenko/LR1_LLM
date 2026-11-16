@@ -1,0 +1,18 @@
+
+# Конфигурация локального LLM-сервера
+
+server:
+  base_url: "http://127.0.0.1:8080/v1"
+  api_key: "not-needed"
+
+model:
+  name: ".\\models\\Qwen_Qwen3-4B-Instruct-2507-Q4_K_M.gguf"
+  format: "GGUF"
+  quantization: "Q4_K_M"
+
+generation:
+  temperature: 0
+  max_tokens: 16
+  stream: true
+  include_usage: true
+  ignore_eos: true
