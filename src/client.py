@@ -8,7 +8,10 @@ from datetime import datetime, timezone
 
 import yaml
 from openai import OpenAI
-
+try:
+    from src.tracking import log_record
+except ModuleNotFoundError:
+    from tracking import log_record
 
 # Корневая папка проекта
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
@@ -196,6 +199,11 @@ def measure_request(
     }
 
     save_result(record)
+    # Затем регистрируем измерение в MLflow
+    try:
+       log_record(record, config)
+    except Exception as error:
+       print(f"Ошибка сохранения в MLflow: {error}")
 
     return record
 
