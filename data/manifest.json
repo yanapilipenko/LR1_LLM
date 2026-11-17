@@ -1,0 +1,10 @@
+{
+    "source": "Project Gutenberg",
+    "book_id": 1342,
+    "title": "Pride and Prejudice",
+    "author": "Jane Austen",
+    "url": "https://www.gutenberg.org/ebooks/1342",
+    "filename": "data\\pride_and_prejudice.txt",
+    "encoding": "UTF-8",
+    "sha256": "48e0522844402a86a3ea98f0947ba85ea54838db3c59022299298ed968a5a163"
+}

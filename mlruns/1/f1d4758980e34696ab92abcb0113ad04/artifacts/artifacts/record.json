@@ -1,0 +1,32 @@
+{
+  "id": "REQUEST_55d4ae367a52_1",
+  "timestamp": "2026-11-16T15:13:11.657911+00:00",
+  "condition": "book_2048_repeat_1",
+  "input_tokens": 2056,
+  "output_tokens": 16,
+  "ttft_ms": 236424.06209994806,
+  "tpot_ms": 282.01844667006907,
+  "total_ms": 240705.14139998704,
+  "finish_reason": "length",
+  "status": "success",
+  "response": "**Main Subject:**  \nThe main subject of the excerpt is the social expectations surrounding",
+  "fragment_times_ms": [
+    236424.062,
+    236701.994,
+    236979.569,
+    237258.139,
+    237536.637,
+    237817.429,
+    238093.35,
+    238370.118,
+    238648.784,
+    238926.004,
+    239204.564,
+    239481.39,
+    239761.112,
+    240059.966,
+    240372.597,
+    240654.339
+  ],
+  "error": null
+}

@@ -1,0 +1,32 @@
+{
+  "id": "REQUEST_05408f64c27e_response_16_3",
+  "timestamp": "2026-11-17T12:23:07.024182+00:00",
+  "condition": "response_16_repeat_3",
+  "input_tokens": 1032,
+  "output_tokens": 16,
+  "ttft_ms": 111876.85329996748,
+  "tpot_ms": 153.3928466689152,
+  "total_ms": 114178.30929998308,
+  "finish_reason": "length",
+  "status": "success",
+  "response": "**Main Subject:**  \nThe main subject of the excerpt is the societal expectation surrounding",
+  "fragment_times_ms": [
+    111876.853,
+    112025.784,
+    112217.179,
+    112386.88,
+    112544.814,
+    112700.411,
+    112868.694,
+    113019.073,
+    113164.296,
+    113310.331,
+    113455.111,
+    113599.701,
+    113745.115,
+    113889.214,
+    114034.352,
+    114177.746
+  ],
+  "error": null
+}

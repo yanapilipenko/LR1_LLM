@@ -1,0 +1,32 @@
+{
+  "id": "REQUEST_653d899183e4_3",
+  "timestamp": "2026-11-16T14:22:24.347322+00:00",
+  "condition": "book_4096_repeat_3",
+  "input_tokens": 4104,
+  "output_tokens": 16,
+  "ttft_ms": 508.33620002958924,
+  "tpot_ms": 555.5744733312167,
+  "total_ms": 8842.543500009924,
+  "finish_reason": "length",
+  "status": "success",
+  "response": "**Main Subject:**  \nThe main subject of the excerpt is the introduction of Mr",
+  "fragment_times_ms": [
+    508.336,
+    1154.479,
+    1750.964,
+    2240.799,
+    2713.051,
+    3199.897,
+    3747.398,
+    4458.613,
+    5001.434,
+    5631.797,
+    6262.503,
+    6741.959,
+    7234.774,
+    7812.767,
+    8306.714,
+    8841.953
+  ],
+  "error": null
+}

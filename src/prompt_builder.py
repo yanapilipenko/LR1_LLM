@@ -73,8 +73,9 @@ def tokenize(text):
     return len(result["tokens"])
 
 
-def create_prompt(book_text, target_tokens):
-    """Формирование запроса заданной длины."""
+
+def create_prompt(book_text, target_tokens, start_position=0):
+    """Формирование запроса заданной длины из отдельного фрагмента книги."""
 
     label = f"REQUEST_{uuid.uuid4().hex[:12]}"
 
@@ -87,16 +88,18 @@ def create_prompt(book_text, target_tokens):
         "TEXT:\n"
     )
 
-    # Формируем запрос с максимально возможным фрагментом книги
+    # Берём фрагмент книги, начиная с указанной позиции
+    source_text = book_text[start_position:]
+
     left = 0
-    right = len(book_text)
+    right = len(source_text)
     best_prompt = None
     best_count = 0
 
     while left <= right:
         middle = (left + right) // 2
 
-        prompt = instruction + book_text[:middle]
+        prompt = instruction + source_text[:middle]
         count = tokenize(prompt)
 
         if count <= target_tokens:
@@ -106,12 +109,7 @@ def create_prompt(book_text, target_tokens):
         else:
             right = middle - 1
 
-    if best_prompt is None:
-        raise ValueError(
-            f"Инструкция превышает лимит {target_tokens} токенов"
-        )
-
-    if best_count != target_tokens:
+    if best_prompt is None or best_count != target_tokens:
         raise ValueError(
             f"Не удалось получить ровно {target_tokens} токенов. "
             f"Получено: {best_count}"
@@ -125,6 +123,43 @@ def create_prompt(book_text, target_tokens):
     }
 
 
+
+def prepare_load_prompts(book_text):
+    """Создание 16 разных запросов по 1024 токена."""
+
+    count = 16
+    length = 1024
+
+    segment_size = len(book_text) // count
+
+    for i in range(count):
+
+        start_position = i * segment_size
+
+        print(
+            f"\nПодготовка нагрузочного запроса "
+            f"{i + 1}/{count}..."
+        )
+
+        result = create_prompt(
+            book_text,
+            length,
+            start_position
+        )
+
+        output_path = (
+            OUTPUT_DIR / f"prompt_1024_load_{i + 1:02d}.json"
+        )
+
+        output_path.write_text(
+            json.dumps(result, ensure_ascii=False, indent=4),
+            encoding="utf-8"
+        )
+
+        print(f"Количество токенов: {result['prompt_tokens']}")
+        print(f"Файл: {output_path.name}")
+
+
 def prepare_prompts():
     """Подготовка запросов всех заданных размеров."""
 
@@ -134,6 +169,8 @@ def prepare_prompts():
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     for length in TOKEN_LENGTHS:
+        print("\nПодготовка запросов для эксперимента 3...")
+        prepare_load_prompts(book_text)
         print(f"\nПодготовка запроса на {length} токенов...")
 
         result = create_prompt(book_text, length)

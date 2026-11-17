@@ -1,0 +1,15 @@
+{
+  "id": "de388115-a70a-430e-a730-5079031cdc92",
+  "timestamp": "2026-11-16T15:03:42.914211+00:00",
+  "condition": "warmup",
+  "input_tokens": null,
+  "output_tokens": null,
+  "ttft_ms": null,
+  "tpot_ms": null,
+  "total_ms": 13645.439299987629,
+  "finish_reason": null,
+  "status": "error",
+  "response": "",
+  "fragment_times_ms": [],
+  "error": "Connection error."
+}

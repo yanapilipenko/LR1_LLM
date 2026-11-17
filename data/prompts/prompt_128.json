@@ -1,0 +1,6 @@
+{
+    "id": "REQUEST_ea8694a9cefc",
+    "target_tokens": 128,
+    "prompt_tokens": 128,
+    "prompt": "[REQUEST_ea8694a9cefc]\nYou are an English language text analysis assistant. Read the following excerpt from Pride and Prejudice by Jane Austen. Identify its main subject and summarize the provided text.\n\nTEXT:\nProduced by Anonymous Volunteers\n\n\n\n\n\nPRIDE AND PREJUDICE\n\nBy Jane Austen\n\n\n\nChapter 1\n\n\nIt is a truth universally acknowledged, that a single man in possession\nof a good fortune, must be in want of a wife.\n\nHowever little known the feelings or views of such a man may be on his\nfirst entering a neighbourhood, this truth is so well fixed in the"
+}

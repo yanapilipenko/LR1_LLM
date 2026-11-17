@@ -1,0 +1,32 @@
+{
+  "id": "REQUEST_05408f64c27e_5",
+  "timestamp": "2026-11-16T14:03:32.641634+00:00",
+  "condition": "book_1024_repeat_5",
+  "input_tokens": 1032,
+  "output_tokens": 16,
+  "ttft_ms": 178.96650003967807,
+  "tpot_ms": 170.35313999901214,
+  "total_ms": 2735.23180000484,
+  "finish_reason": "length",
+  "status": "success",
+  "response": "**Main Subject:**  \nThe main subject of this excerpt from *Pride and",
+  "fragment_times_ms": [
+    178.967,
+    328.766,
+    486.25,
+    646.037,
+    808.803,
+    1074.04,
+    1241.999,
+    1400.398,
+    1568.252,
+    1732.841,
+    1896.392,
+    2065.232,
+    2217.104,
+    2367.118,
+    2558.346,
+    2734.264
+  ],
+  "error": null
+}

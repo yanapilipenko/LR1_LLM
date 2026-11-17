@@ -1,0 +1,32 @@
+{
+  "id": "REQUEST_67246c5500b2_3",
+  "timestamp": "2026-11-16T14:39:13.648899+00:00",
+  "condition": "book_128_repeat_3",
+  "input_tokens": 136,
+  "output_tokens": 16,
+  "ttft_ms": 5736.032299988437,
+  "tpot_ms": 117.19627333416913,
+  "total_ms": 7494.445400021505,
+  "finish_reason": "length",
+  "status": "success",
+  "response": "Main Subject:  \nThe main subject of the excerpt is the societal expectation surrounding marriage",
+  "fragment_times_ms": [
+    5736.032,
+    5853.823,
+    5972.145,
+    6090.105,
+    6205.959,
+    6322.842,
+    6439.113,
+    6555.908,
+    6673.277,
+    6789.495,
+    6907.296,
+    7024.51,
+    7143.402,
+    7259.453,
+    7375.552,
+    7493.976
+  ],
+  "error": null
+}

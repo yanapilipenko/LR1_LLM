@@ -1,0 +1,15 @@
+{
+  "id": "53720d1b-b66a-4999-a4ea-376b90786917",
+  "timestamp": "2026-11-17T12:15:08.839765+00:00",
+  "condition": "experiment_2_warmup",
+  "input_tokens": null,
+  "output_tokens": null,
+  "ttft_ms": null,
+  "tpot_ms": null,
+  "total_ms": 1489.7503000102006,
+  "finish_reason": null,
+  "status": "error",
+  "response": "",
+  "fragment_times_ms": [],
+  "error": "Error code: 503 - Loading model"
+}

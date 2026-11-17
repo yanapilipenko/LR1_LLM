@@ -1,0 +1,32 @@
+{
+  "id": "ad191bdf-aed9-4157-9840-524f1cfbd861",
+  "timestamp": "2026-11-16T14:01:10.796283+00:00",
+  "condition": "warmup",
+  "input_tokens": 136,
+  "output_tokens": 16,
+  "ttft_ms": 37486.23480001697,
+  "tpot_ms": 421.5923533309251,
+  "total_ms": 43829.087499994785,
+  "finish_reason": "length",
+  "status": "success",
+  "response": "Main Subject:  \nThe main subject of the excerpt is the societal expectation that wealthy",
+  "fragment_times_ms": [
+    37486.235,
+    40348.944,
+    40782.735,
+    41676.159,
+    42471.006,
+    42586.511,
+    42701.969,
+    42818.126,
+    42934.427,
+    43085.787,
+    43202.203,
+    43318.751,
+    43436.49,
+    43555.67,
+    43673.193,
+    43810.12
+  ],
+  "error": null
+}

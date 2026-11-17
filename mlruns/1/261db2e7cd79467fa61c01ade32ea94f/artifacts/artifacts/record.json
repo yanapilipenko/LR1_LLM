@@ -1,0 +1,15 @@
+{
+  "id": "REQUEST_55d4ae367a52_1",
+  "timestamp": "2026-11-16T15:07:22.235496+00:00",
+  "condition": "book_2048_repeat_1",
+  "input_tokens": null,
+  "output_tokens": null,
+  "ttft_ms": null,
+  "tpot_ms": null,
+  "total_ms": 5374.6828000294045,
+  "finish_reason": null,
+  "status": "error",
+  "response": "",
+  "fragment_times_ms": [],
+  "error": "Connection error."
+}

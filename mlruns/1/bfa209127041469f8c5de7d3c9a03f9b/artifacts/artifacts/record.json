@@ -1,0 +1,32 @@
+{
+  "id": "REQUEST_cb9250bceac0_3",
+  "timestamp": "2026-11-16T14:02:07.347285+00:00",
+  "condition": "book_512_repeat_3",
+  "input_tokens": 520,
+  "output_tokens": 16,
+  "ttft_ms": 273.3517999877222,
+  "tpot_ms": 149.34770000011972,
+  "total_ms": 2514.110999996774,
+  "finish_reason": "length",
+  "status": "success",
+  "response": "**Main Subject:**  \nThe arrival of a wealthy, single man\u2014Mr.",
+  "fragment_times_ms": [
+    273.352,
+    406.571,
+    540.149,
+    672.688,
+    805.663,
+    1004.153,
+    1219.841,
+    1364.799,
+    1506.332,
+    1643.87,
+    1788.237,
+    1935.621,
+    2086.321,
+    2230.567,
+    2368.39,
+    2513.567
+  ],
+  "error": null
+}
