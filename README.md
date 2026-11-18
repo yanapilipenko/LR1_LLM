@@ -1,8 +1,6 @@
 Для запуска интерфейса MLflow используется команда:
-
+python plot_ttft_mlflow.py #графики
 mlflow ui --backend-store-uri sqlite:///mlflow.db
-
-После запуска интерфейс доступен в браузере:
 
 http://127.0.0.1:5000
 
