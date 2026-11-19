@@ -1,0 +1,40 @@
+# Python cache
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+
+# MLflow local storage
+mlruns/
+mlartifacts/
+mlflow.db
+*.db
+
+# Neural network models
+models/
+*.gguf
+*.safetensors
+*.pt
+*.pth
+
+# llama.cpp binaries
+tools/llama-cpu/
+build/
+cmake-build-*/
+
+# Temporary files and logs
+*.log
+*.tmp
+*.cache
+
+# Operating system files
+.DS_Store
+Thumbs.db
