@@ -1,4 +1,6 @@
+import json
 import os
+from statistics import median
 from pathlib import Path
 
 import matplotlib
@@ -10,28 +12,54 @@ import mlflow
 # mlruns создастся рядом со скриптом, тогда обычный `mlflow ui --port 5000`
 # запущенный из этой папки, всё увидит
 os.chdir(Path(__file__).resolve().parent)
+mlflow.set_tracking_uri("sqlite:///mlflow.db")
 mlflow.set_experiment("lab1")
 
-# ---------------- Данные ----------------
-# 1. TTFT от длины запроса
-prompt_len = [128, 512, 1024, 2048, 4096]
-ttft = [5.671, 27.219, 71.712, 238.972, 882.635]
+def records(name):
+    # Исторический журнал содержит две JSON-записи на одной строке.
+    text = Path("results", name).read_text(encoding="utf-8-sig").strip()
+    decoder = json.JSONDecoder()
+    while text:
+        row, end = decoder.raw_decode(text)
+        yield row
+        text = text[end:].lstrip()
 
-# 2. Полное время от длины ответа
-out_len = [16, 64, 256, 1024]
-total_time = [94.24, 110.44, 117.36, 303.13]
-SLOPE, INTERCEPT = 0.2082, 85.57
 
-# 3. Пропускная способность и задержка при разном числе клиентов
-clients = [1, 2, 4]
-p90_ttft = [89.77, 204.03, 437.75]
-tok_s = [1.329, 1.227, 1.209]
+def measured_series(name, prefix, first_condition, metric):
+    rows = list(records(name))
+    # Начало последней серии определяется порядком запуска, до проверки метрик.
+    start = max(i for i, row in enumerate(rows) if row["condition"] == first_condition)
+    groups = {}
+    for row in rows[start:]:
+        if row["condition"].startswith(prefix):
+            length = int(row["condition"].split("_")[1])
+            if row["condition"].endswith("_repeat_1"):
+                groups[length] = []
+            groups[length].append(row)
+    for length, group in groups.items():
+        if len(group) != 5 or any(row["status"] != "success" for row in group):
+            raise ValueError(f"Проверьте состав серии {name}, длина {length}")
+    lengths = sorted(groups)
+    samples = [[row[metric] / 1000 for row in groups[length]] for length in lengths]
+    return lengths, samples
+
+
+prompt_len, timings = measured_series("results.jsonl", "book_", "book_128_repeat_1", "ttft_ms")
+ttft = [median(values) for values in timings]
+out_len, timings_out = measured_series("results_2.jsonl", "response_", "response_16_repeat_1", "total_ms")
+total_time = [median(values) for values in timings_out]
+SLOPE, INTERCEPT = np.polyfit(out_len, total_time, 1)
+loads = [row for row in records("experiment_3.jsonl") if row.get("condition") == "experiment_3_summary"]
+clients = [row["clients"] for row in loads]
+p90_ttft = [row["p90_ttft_ms"] / 1000 for row in loads]
+tok_s = [row["output_tokens_per_second"] for row in loads]
 
 
 # ---------------- Эксперимент 1 ----------------
 with mlflow.start_run(run_name="experiment_1_ttft_vs_prompt"):
     fig, ax = plt.subplots(figsize=(7, 4.5))
-    ax.plot(prompt_len, ttft, "o-", color="tab:blue")
+    ax.errorbar(prompt_len, ttft, yerr=[[m - min(v) for m, v in zip(ttft, timings)],
+                 [max(v) - m for m, v in zip(ttft, timings)]], fmt="o-", capsize=4)
     for x, y in zip(prompt_len, ttft):
         ax.annotate(f"{y:.1f}", (x, y), textcoords="offset points",
                     xytext=(-6, 7), ha="right", fontsize=9)
