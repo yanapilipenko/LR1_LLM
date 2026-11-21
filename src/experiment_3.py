@@ -422,66 +422,13 @@ async def run_level(config, prompts, clients_count):
     return summary
 
 
-# async def main():
-
-#     config = load_config()
-#     prompts = load_prompts()
-
-#     print("ЭКСПЕРИМЕНТ 3. НАГРУЗКА")
-#     print(f"Подготовлено текстов: {len(prompts)}")
-#     print(f"Уровни нагрузки: {CLIENT_LEVELS}")
-
-#     summaries = []
-
-#     for clients_count in CLIENT_LEVELS:
-
-#         summary = await run_level(
-#             config,
-#             prompts,
-#             clients_count
-#         )
-
-#         summaries.append(summary)
-
-#     print("\nЭКСПЕРИМЕНТ ЗАВЕРШЁН.")
-
-#     print("\nСВОДНАЯ ТАБЛИЦА:")
-
-#     for item in summaries:
-#         print(
-#             f"Клиенты: {item['clients']}, "
-#             f"Output tok/s: "
-#             f"{item['output_tokens_per_second']:.3f}, "
-#             f"Req/s: "
-#             f"{item['requests_per_second']:.4f}, "
-#             f"P90 TTFT: "
-#             f"{item['p90_ttft_ms']}, "
-#             f"Median TPOT: "
-#             f"{item['median_tpot_ms']}, "
-#             f"Goodput: "
-#             f"{item['goodput_percent']:.1f}%"
-#         )
-
 async def main():
-
     config = load_config()
     prompts = load_prompts()
+    for clients in CLIENT_LEVELS:
+        summary = await run_level(config, prompts, clients)
+        print(json.dumps(summary, ensure_ascii=False, indent=2))
 
-    print("ЭКСПЕРИМЕНТ 3. ДОПОЛНИТЕЛЬНЫЙ ТЕСТ")
-    print("Количество клиентов: 4")
 
-    summary = await run_level(
-        config,
-        prompts,
-        4
-    )
-
-    print("\nДОПОЛНИТЕЛЬНЫЙ ТЕСТ ЗАВЕРШЁН.")
-
-    print(json.dumps(
-        summary,
-        ensure_ascii=False,
-        indent=4
-    ))
 if __name__ == "__main__":
     asyncio.run(main())
